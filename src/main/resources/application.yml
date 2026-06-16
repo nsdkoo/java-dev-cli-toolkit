@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: DevPilot
+  main:
+    banner-mode: off
+
+devpilot:
+  author:
+    name: "Trinh Minh Triet"
+    email: "contact@trinhminhtriet.com"
+    website: "https://trinhminhtriet.com"
+  version: "1.0.0"
+  license:
+    name: "MIT"

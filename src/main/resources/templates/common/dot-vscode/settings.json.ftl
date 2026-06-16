@@ -1,0 +1,5 @@
+﻿{
+  "editor.formatOnSave": true,
+  "prettier.endOfLine": "lf",
+  "editor.wordWrap": "off"
+}
