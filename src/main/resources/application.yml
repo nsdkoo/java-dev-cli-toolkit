@@ -8,3 +8,5 @@ logging:
   level:
     root: INFO
     com.app.devcli: DEBUG
+
+# template output configurable
