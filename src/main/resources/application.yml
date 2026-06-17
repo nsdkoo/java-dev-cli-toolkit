@@ -9,4 +9,7 @@ logging:
     root: INFO
     com.app.devcli: DEBUG
 
-# template output configurable
+app:
+  cli:
+    name: dev-cli-toolkit
+    version: 0.0.1-SNAPSHOT
