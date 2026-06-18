@@ -1,4 +1,4 @@
-# 开发者命令行工具集
+﻿# 开发者命令行工具集
 
 Java CLI 工具包，支持项目脚手架与模板生成。
 
@@ -15,7 +15,8 @@ java -jar target/dev-cli-toolkit-0.0.1-SNAPSHOT.jar --help
 |------|------|
 | `project init` | 初始化新项目 |
 | `git init` | 初始化 Git 仓库 |
-| `scan` | 扫描依赖或密钥 |
+| `scan secret` | 扫描密钥（自动跳过 node_modules、target 等） |
+| `doctor` | 检查 java / git / mvn 环境 |
 
 ## 模板
 

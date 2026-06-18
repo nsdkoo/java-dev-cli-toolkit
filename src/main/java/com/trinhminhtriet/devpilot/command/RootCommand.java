@@ -4,6 +4,7 @@ import com..DevCliToolkit.command.common.ConfigCommand;
 import com..DevCliToolkit.command.common.InfoCommand;
 import com..DevCliToolkit.command.common.ListCommand;
 import com..DevCliToolkit.command.common.VersionCommand;
+import com..DevCliToolkit.command.DoctorCommand;
 import com..DevCliToolkit.command.file.EnvCommand;
 import com..DevCliToolkit.command.file.FileCommand;
 import com..DevCliToolkit.command.git.GitCommand;
@@ -37,7 +38,8 @@ import picocli.CommandLine.Command;
         ProjectCommand.class,
         AutoCompletionCommand.class,
         DnsRecordCommand.class,
-        MfaCommand.class
+        MfaCommand.class,
+        DoctorCommand.class
     }
 )
 public class RootCommand implements Runnable {

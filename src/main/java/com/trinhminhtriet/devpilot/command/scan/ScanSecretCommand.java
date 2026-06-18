@@ -61,20 +61,38 @@ public class ScanSecretCommand implements Runnable {
 // Utility class to walk files
 class FileWalker {
 
+  private static final List<String> DEFAULT_EXCLUDES = List.of(
+      "node_modules", ".git", "target", "build", "dist", "__pycache__", ".venv", "venv");
+
   public static List<File> getAllSourceFiles(File dir, String excludePattern) {
-    // TODO: Implement recursive file listing, filter by excludePattern (glob)
-    // For now, return all .java, .py, .js, .ts, .go, .rs files
     try {
       return Files.walk(dir.toPath())
-          .filter(p -> {
-            String name = p.getFileName().toString();
-            return name.endsWith(".java") || name.endsWith(".py") || name.endsWith(".js") || name.endsWith(".ts") || name.endsWith(".go") || name.endsWith(".rs");
-          })
+          .filter(p -> Files.isRegularFile(p))
+          .filter(p -> isSourceFile(p.getFileName().toString()))
+          .filter(p -> !isExcluded(p, excludePattern))
           .map(Path::toFile)
           .toList();
     } catch (Exception e) {
       return List.of();
     }
+  }
+
+  private static boolean isSourceFile(String name) {
+    return name.endsWith(".java") || name.endsWith(".py") || name.endsWith(".js")
+        || name.endsWith(".ts") || name.endsWith(".go") || name.endsWith(".rs");
+  }
+
+  private static boolean isExcluded(Path path, String excludePattern) {
+    String normalized = path.toString().replace('\\', '/');
+    for (String part : DEFAULT_EXCLUDES) {
+      if (normalized.contains("/" + part + "/") || normalized.endsWith("/" + part)) {
+        return true;
+      }
+    }
+    if (excludePattern != null && !excludePattern.isBlank()) {
+      return normalized.contains(excludePattern.replace('\\', '/'));
+    }
+    return false;
   }
 }
 
